@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Resume — Deepak Pandey</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--gold:#C9A84C;--gold-l:#E8C96D;--gold-d:#8A6A28;--bg:#08080A;--bg2:#111112;--bg3:#18181A;--bg4:#202022;--text:#EDEAE0;--muted:#7A7870;--dim:#3A3A38;--border:rgba(201,168,76,0.10);--borderl:rgba(201,168,76,0.25);--green:#4CAF7D;--radius:4px;--radius-lg:12px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;overflow-x:hidden}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:56px;background:rgba(8,8,10,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:#08080A;padding:.45rem 1.1rem;border-radius:var(--radius);text-decoration:none;font-weight:700;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold-l)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--muted);display:block}
+.mobile-menu{display:none;position:fixed;inset:56px 0 0 0;background:rgba(8,8,10,.97);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.25rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--muted);text-decoration:none;transition:color .2s}
+.mobile-menu a:hover{color:var(--gold)}
+section{padding:5rem 2.5rem;position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;width:100%}
+.sec-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'DM Mono',monospace;margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
+.sec-label::after{content:'';height:1px;width:32px;background:var(--gold-d);display:inline-block}
+.btn-g{display:inline-block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:#08080A;padding:.65rem 1.5rem;border-radius:var(--radius);text-decoration:none;font-weight:700;transition:all .2s}
+.btn-g:hover{background:var(--gold-l)}
+.btn-o{display:inline-block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--muted);padding:.65rem 1.5rem;border-radius:var(--radius);text-decoration:none;font-weight:500;border:1px solid var(--borderl);transition:all .2s}
+.btn-o:hover{color:var(--gold);border-color:var(--gold)}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.blink{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 1.3s ease-in-out infinite;vertical-align:middle;margin-left:6px}
+.cd-grid{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.cd-cell{background:var(--bg3);padding:1rem 1.25rem;text-align:center;flex:1}
+.cd-num{font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;color:var(--gold);display:block;line-height:1;margin-bottom:.3rem;letter-spacing:-.02em}
+.cd-unit{font-size:.6rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;font-family:'DM Mono',monospace}
+footer{border-top:1px solid var(--border);padding:1.75rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.footer-copy{font-size:.75rem;color:var(--dim);font-family:'DM Mono',monospace}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.7rem;color:var(--dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+@media(max-width:768px){.nav{padding:0 1.25rem}.nav-links{display:none}.hamburger{display:flex}section{padding:4rem 1.25rem}.cd-num{font-size:1.3rem}.cd-cell{padding:.75rem .6rem}footer{flex-direction:column;gap:1rem;padding:1.5rem 1.25rem;text-align:center}}
+
+/* RESUME-SPECIFIC */
+.resume-hero{padding:5rem 2.5rem 3rem;background:var(--bg2);border-bottom:1px solid var(--border)}
+.resume-hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
+.resume-name{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:.5rem}
+.resume-name em{color:var(--gold);font-style:normal}
+.resume-sub{font-size:.85rem;color:var(--muted);margin-bottom:.75rem}
+.resume-quote{font-size:.95rem;color:var(--muted);font-style:italic;border-left:2px solid var(--gold-d);padding-left:1rem;max-width:520px;line-height:1.7}
+.dl-btn{display:flex;align-items:center;gap:.5rem;font-size:.75rem;padding:.65rem 1.25rem;border:1px solid var(--borderl);color:var(--gold);border-radius:var(--radius);text-decoration:none;white-space:nowrap;transition:all .2s;font-weight:500}
+.dl-btn:hover{background:rgba(201,168,76,.08)}
+@media(max-width:768px){.resume-hero-inner{grid-template-columns:1fr}.resume-hero{padding:4rem 1.25rem 2.5rem}}
+.exp-section,.skills-section,.edu-section{max-width:1100px;margin:0 auto}
+.exp-item{display:grid;grid-template-columns:160px 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--border)}
+.exp-item:last-child{border-bottom:none}
+.exp-date{font-size:.75rem;color:var(--dim);font-family:'DM Mono',monospace;line-height:1.6;padding-top:.2rem}
+.exp-role{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.exp-co{font-size:.85rem;color:var(--gold);margin-bottom:.75rem;font-weight:500}
+.exp-context{font-size:.85rem;color:var(--dim);font-style:italic;margin-bottom:.75rem;line-height:1.6}
+.exp-bullets{display:flex;flex-direction:column;gap:.4rem}
+.exp-bullet{font-size:.88rem;color:var(--muted);padding-left:1.25rem;position:relative;line-height:1.6}
+.exp-bullet::before{content:'→';position:absolute;left:0;color:var(--gold-d);font-size:.75rem;top:.1rem}
+@media(max-width:768px){.exp-item{grid-template-columns:1fr;gap:.5rem}}
+.skills-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem;margin-top:1.5rem}
+.skill-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem}
+.skill-name{font-size:.88rem;color:var(--text);font-weight:500;margin-bottom:.6rem}
+.skill-track{height:2px;background:var(--bg4);border-radius:1px;overflow:hidden}
+.skill-fill{height:100%;border-radius:1px;background:var(--gold)}
+.skill-fill.learning{background:var(--green)}
+.skill-note{font-size:.68rem;color:var(--dim);margin-top:.4rem;font-family:'DM Mono',monospace}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem;margin-top:1.5rem}
+.cert-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem}
+.cert-name{font-size:.88rem;color:var(--text);font-weight:500;margin-bottom:.25rem}
+.cert-issuer{font-size:.75rem;color:var(--gold)}
+.pub-link{display:flex;align-items:flex-start;gap:1rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;text-decoration:none;color:inherit;transition:border-color .2s;margin-top:1.5rem}
+.pub-link:hover{border-color:var(--borderl)}
+</style>
+</head>
+<body>
+<div id="stars-bg" style="position:fixed;inset:0;z-index:0;pointer-events:none;">
+  <img src="stars_bg.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.07;" aria-hidden="true">
+</div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">DP</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="journey.html">Journey</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="https://topmate.io/dpkpndy" target="_blank">Mentor</a></li>
+  </ul>
+  <a href="https://topmate.io/dpkpndy" target="_blank" class="nav-cta">Work with me</a>
+  <button class="hamburger" id="ham" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mob">
+  <a href="index.html">Home</a><a href="journey.html">Journey</a>
+  <a href="resume.html">Resume</a><a href="https://topmate.io/dpkpndy" target="_blank">Mentor</a>
+</div>
+
+<div class="resume-hero">
+  <div class="resume-hero-inner fade">
+    <div>
+      <h1 class="resume-name">Deepak <em>Pandey</em></h1>
+      <p class="resume-sub">Data Analyst → Applied AI Engineer · Bengaluru · 9+ years · dpkpndy@hotmail.com</p>
+      <p class="resume-quote">"I make dashboards that help people decide things. Now I'm learning to make AI that does the same."</p>
+    </div>
+    <a href="https://drive.google.com/file/d/17S2BIQ_dAMWLZriknbUlj6lba1mJ5v3e/view?usp=sharing" target="_blank" class="dl-btn">
+      ↓ Download PDF
+    </a>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section>
+  <div class="exp-section">
+    <div class="sec-label fade">Experience</div>
+    <!-- GT — CURRENT -->
+    <div class="exp-item fade">
+      <div class="exp-date">Apr 2026<br><span style="color:var(--green);font-size:.7rem">Present</span></div>
+      <div>
+        <div class="exp-role">Data Analyst <span style="font-size:.75rem;padding:.15rem .6rem;background:rgba(76,175,125,.1);color:var(--green);border:1px solid rgba(76,175,125,.25);border-radius:999px;font-family:'DM Mono',monospace;letter-spacing:.06em;vertical-align:middle;margin-left:.5rem">Current</span></div>
+        <div class="exp-co">Grant Thornton · Client: Uber · US &amp; Canada Operations</div>
+        <div class="exp-context">Continuing Uber US &amp; Canada operations work, now through Grant Thornton — same mission, bigger scope.</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Processing and analysing billions of marketplace records using SQL and Big Data tools with 99.9% data accuracy</div>
+          <div class="exp-bullet">Collaborating with AI/ML and analytics teams to improve data classification and operational processes</div>
+          <div class="exp-bullet">Supporting large-scale data tagging and downstream reporting via complex SQL workflows</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXL (Uber) -->
+    <div class="exp-item fade">
+      <div class="exp-date">Apr 2024<br>Apr 2026</div>
+      <div>
+        <div class="exp-role">Data Analyst — US &amp; Canada Operations</div>
+        <div class="exp-co">EXL · Client: Uber · Bengaluru</div>
+        <div class="exp-context">Embedded data analyst role supporting Uber's marketplace operations — processing data at massive scale.</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Processed and analysed billions of marketplace records using SQL and Big Data tools, maintaining 99.9% data accuracy</div>
+          <div class="exp-bullet">Automated tax classification tagging for 50M+ items, improving accuracy by 20% and reducing manual effort by 40%</div>
+          <div class="exp-bullet">Built complex SQL workflows using Presto/Hive to support large-scale data tagging and downstream reporting</div>
+          <div class="exp-bullet">Collaborated with AI/ML and analytics teams to improve data classification and operational processes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quote-Unquote Art -->
+    <div class="exp-item fade">
+      <div class="exp-date">Jun 2023<br>Mar 2024</div>
+      <div>
+        <div class="exp-role">Business Intelligence Analyst · Product Manager</div>
+        <div class="exp-co">Quote-Unquote Art · Digital Art Platform · Remote</div>
+        <div class="exp-context">A pandemic-born marketplace for indie digital artists.</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Led data-driven marketing and product insights, increasing website traffic by 30% within five months</div>
+          <div class="exp-bullet">Improved campaign ROI by 14% by analysing Instagram and Facebook engagement patterns</div>
+          <div class="exp-bullet">Shaped brand positioning and early growth strategy across multiple e-commerce channels</div>
+          <div class="exp-bullet">Developed dashboards to monitor user behaviour, traffic sources, and marketing attribution</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Supply Wisdom -->
+    <div class="exp-item fade">
+      <div class="exp-date">Dec 2019<br>May 2023</div>
+      <div>
+        <div class="exp-role">Business Analyst — Risk Intelligence</div>
+        <div class="exp-co">Supply Wisdom · AI-Driven Risk SaaS · Bengaluru</div>
+        <div class="exp-context">Real-time AI platform delivering third-party and location risk intelligence to global enterprises.</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Designed Power BI dashboards to track vendor risk metrics for global enterprise clients</div>
+          <div class="exp-bullet">Wrote advanced SQL queries to identify risk exposure and cost-saving opportunities worth $10K+ annually</div>
+          <div class="exp-bullet">Conducted third-party risk assessments for US healthcare clients using financial, ESG, and operational indicators</div>
+          <div class="exp-bullet">Gathered and documented requirements across 10+ analytics projects, reducing requirement revisions by 25%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acolyte -->
+    <div class="exp-item fade">
+      <div class="exp-date">Dec 2018<br>Jul 2019</div>
+      <div>
+        <div class="exp-role">Business Analyst · Market Research</div>
+        <div class="exp-co">Acolyte Resource Group · Recruitment Tech · Chennai</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Conducted analysis of business processes and market trends to identify operational improvements</div>
+          <div class="exp-bullet">Implemented process improvements increasing operational efficiency by 15%</div>
+          <div class="exp-bullet">Performed competitive and market analysis to support client strategy initiatives</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Primenumbers -->
+    <div class="exp-item fade">
+      <div class="exp-date">Jun 2017<br>Nov 2018</div>
+      <div>
+        <div class="exp-role">Business Analyst · Market Research</div>
+        <div class="exp-co">Primenumbers Technologies · Govt Data Intelligence · Bengaluru</div>
+        <div class="exp-context">Data-centric platform serving India's top companies — Cipla, Blue Star, HPCL — for government contract intelligence.</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Led market research and data analysis supporting sales and business development teams</div>
+          <div class="exp-bullet">Implemented automation solutions improving operational efficiency by 20%</div>
+          <div class="exp-bullet">Managed projects worth $10K–$20K, coordinating cross-functional teams to deliver research insights</div>
+          <div class="exp-bullet">Led and coached a 4-member sales team, growing sales 78% over 6 months</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="skills-section fade">
+    <div class="sec-label">Skills</div>
+    <div class="skills-wrap">
+      <div class="skill-item"><div class="skill-name">SQL &amp; Advanced SQL</div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div><div class="skill-note">Presto · Hive · CTEs · window functions</div></div>
+      <div class="skill-item"><div class="skill-name">Power BI</div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div><div class="skill-note">Dashboards · DAX · KPI frameworks</div></div>
+      <div class="skill-item"><div class="skill-name">Big Data Tools</div><div class="skill-track"><div class="skill-fill" style="width:78%"></div></div><div class="skill-note">Billions of records · Presto/Hive · GCP</div></div>
+      <div class="skill-item"><div class="skill-name">Market Research</div><div class="skill-track"><div class="skill-fill" style="width:88%"></div></div><div class="skill-note">Competitive intel · risk analysis · sourcing</div></div>
+      <div class="skill-item"><div class="skill-name">Advanced Excel</div><div class="skill-track"><div class="skill-fill" style="width:82%"></div></div><div class="skill-note">Power Query · Pivot Tables · macros</div></div>
+      <div class="skill-item"><div class="skill-name">Tableau / Looker</div><div class="skill-track"><div class="skill-fill" style="width:72%"></div></div><div class="skill-note">Data visualisation · storytelling</div></div>
+      <div class="skill-item"><div class="skill-name">Alteryx</div><div class="skill-track"><div class="skill-fill" style="width:65%"></div></div><div class="skill-note">Data prep · workflow automation</div></div>
+      <div class="skill-item"><div class="skill-name">GCP / AWS</div><div class="skill-track"><div class="skill-fill" style="width:55%"></div></div><div class="skill-note">Vertex AI · S3 · cloud data workflows</div></div>
+      <div class="skill-item"><div class="skill-name">Python <span class="blink"></span></div><div class="skill-track"><div class="skill-fill learning" style="width:18%"></div></div><div class="skill-note" style="color:var(--green)">Currently learning — week 3</div></div>
+    </div>
+    <p style="font-size:.78rem;color:var(--dim);margin-top:1rem;font-style:italic">Green bar = currently learning. Honest about where I am.</p>
+  </div>
+</section>
+
+<!-- EDUCATION + CERTS + PUB -->
+<section>
+  <div class="edu-section fade" style="max-width:1100px;margin:0 auto">
+    <div class="sec-label">Education</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;margin-bottom:3rem">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.25rem">Bachelor of Engineering — Electronics &amp; Communication</div>
+          <div style="color:var(--gold);font-size:.9rem;margin-bottom:.75rem">Birla Institute of Technology, Mesra · First Class · 2012–2016</div>
+          <p style="font-size:.88rem;color:var(--muted);line-height:1.7;max-width:580px">Engineering foundation that shaped systems thinking — from signal processing to adaptive filters. BIT Mesra builds problem-solvers.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem">
+        <span style="font-size:.72rem;padding:.25rem .7rem;border-radius:999px;background:var(--bg3);border:1px solid var(--border);color:var(--muted)">VP, College Literary Society</span>
+        <span style="font-size:.72rem;padding:.25rem .7rem;border-radius:999px;background:var(--bg3);border:1px solid var(--border);color:var(--muted)">IIM Calcutta E-cell Ambassador</span>
+        <span style="font-size:.72rem;padding:.25rem .7rem;border-radius:999px;background:var(--bg3);border:1px solid var(--border);color:var(--muted)">DRISTI NGO Member</span>
+      </div>
+    </div>
+
+    <div class="sec-label">Certifications</div>
+    <div class="cert-grid">
+      <div class="cert-item"><div class="cert-name">Introduction to Programming Using Python</div><div class="cert-issuer">Udemy</div></div>
+      <div class="cert-item"><div class="cert-name">The Complete SQL Bootcamp 2021</div><div class="cert-issuer">Udemy</div></div>
+      <div class="cert-item"><div class="cert-name">Data Analytics Professional Certificate</div><div class="cert-issuer">Google · In Progress</div></div>
+      <div class="cert-item"><div class="cert-name">Power BI Data Analyst Professional Certificate</div><div class="cert-issuer">Microsoft · In Progress</div></div>
+      <div class="cert-item"><div class="cert-name">Agile Analytics</div><div class="cert-issuer">University of Virginia · In Progress</div></div>
+    </div>
+
+    <div class="sec-label" style="margin-top:3rem">Publication</div>
+    <a href="https://www.irjet.net/archives/V3/i2/IRJET-V3I2295.pdf" target="_blank" class="pub-link">
+      <div style="font-size:1.5rem;flex-shrink:0">📄</div>
+      <div>
+        <div style="font-size:.68rem;font-family:'DM Mono',monospace;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.35rem">IRJET Journal · Impact Factor 4.45</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.35rem">Active Noise Cancellation using Adaptive Filters</div>
+        <div style="font-size:.85rem;color:var(--muted)">Published research on signal-processing — demonstrating depth in engineering mathematics and algorithmic thinking.</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- STARS BANNER -->
+<div style="position:relative;height:200px;overflow:hidden">
+  <img src="stars_bg.jpg" alt="Night sky" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;opacity:.35">
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,10,.98) 0%,rgba(8,8,10,.7) 50%,rgba(8,8,10,.3) 100%);display:flex;align-items:center;padding:0 2.5rem">
+    <div style="max-width:1100px;margin:0 auto;width:100%">
+      <p style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.5rem">Next chapter: Applied AI Engineer</p>
+      <p style="font-size:.88rem;color:var(--muted);font-style:italic">See the full skill roadmap and Dec 2026 countdown →</p>
+      <a href="journey.html" class="btn-g" style="margin-top:1rem">View the journey</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-copy">© 2025 Deepak Pandey · iamdeepakpandey.com</div>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/dpkpndy/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Pndydpk" target="_blank">GitHub</a>
+    <a href="https://topmate.io/dpkpndy" target="_blank">Topmate</a>
+  </div>
+</footer>
+<script>
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+if(ham)ham.addEventListener('click',()=>mob.classList.toggle('open'));
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Journey — Deepak Pandey</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--gold:#C9A84C;--gold-l:#E8C96D;--gold-d:#8A6A28;--bg:#08080A;--bg2:#111112;--bg3:#18181A;--bg4:#202022;--text:#EDEAE0;--muted:#7A7870;--dim:#3A3A38;--border:rgba(201,168,76,0.10);--borderl:rgba(201,168,76,0.25);--green:#4CAF7D;--teal:#1D9E75;--radius:4px;--radius-lg:12px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;overflow-x:hidden}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:56px;background:rgba(8,8,10,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:#08080A;padding:.45rem 1.1rem;border-radius:var(--radius);text-decoration:none;font-weight:700;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold-l)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--muted);display:block}
+.mobile-menu{display:none;position:fixed;inset:56px 0 0 0;background:rgba(8,8,10,.97);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.25rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--muted);text-decoration:none;transition:color .2s}
+.mobile-menu a:hover{color:var(--gold)}
+section{padding:5rem 2.5rem;position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;width:100%}
+.sec-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'DM Mono',monospace;margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
+.sec-label::after{content:'';height:1px;width:32px;background:var(--gold-d);display:inline-block}
+.btn-g{display:inline-block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:#08080A;padding:.65rem 1.5rem;border-radius:var(--radius);text-decoration:none;font-weight:700;transition:all .2s}
+.btn-g:hover{background:var(--gold-l)}
+.btn-o{display:inline-block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--muted);padding:.65rem 1.5rem;border-radius:var(--radius);text-decoration:none;font-weight:500;border:1px solid var(--borderl);transition:all .2s}
+.btn-o:hover{color:var(--gold);border-color:var(--gold)}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.blink{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 1.3s ease-in-out infinite;vertical-align:middle;margin-left:6px}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.4);opacity:0}}
+.cd-grid{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.cd-cell{background:var(--bg3);padding:1rem 1.25rem;text-align:center;flex:1}
+.cd-num{font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:500;color:var(--gold);display:block;line-height:1;margin-bottom:.3rem;letter-spacing:-.02em}
+.cd-unit{font-size:.6rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;font-family:'DM Mono',monospace}
+footer{border-top:1px solid var(--border);padding:1.75rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.footer-copy{font-size:.75rem;color:var(--dim);font-family:'DM Mono',monospace}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.7rem;color:var(--dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+@media(max-width:768px){.nav{padding:0 1.25rem}.nav-links{display:none}.hamburger{display:flex}section{padding:4rem 1.25rem}.cd-num{font-size:1.3rem}.cd-cell{padding:.75rem .6rem}footer{flex-direction:column;gap:1rem;padding:1.5rem 1.25rem;text-align:center}}
+
+
+/* JOURNEY HERO */
+.journey-hero{position:relative;padding:8rem 2.5rem 5rem;overflow:hidden;background:var(--bg2);border-bottom:1px solid var(--border)}
+.jh-bg{position:absolute;inset:0}
+.jh-bg img{width:100%;height:100%;object-fit:cover;object-position:center 55%;opacity:.18}
+.jh-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,10,.99) 0%,rgba(8,8,10,.85) 60%,rgba(8,8,10,.4) 100%)}
+.jh-content{position:relative;z-index:2;max-width:1100px;margin:0 auto}
+.journey-title{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1rem}
+.journey-title em{display:block;color:var(--gold);font-style:normal}
+.journey-sub{font-size:1rem;color:var(--muted);font-style:italic;max-width:520px;line-height:1.8;margin-bottom:2rem}
+.cd-wrap-hero{max-width:440px}
+.cd-meta{display:flex;justify-content:space-between;font-size:.72rem;color:var(--dim);font-family:'DM Mono',monospace;margin-bottom:.5rem}
+.progress-track{height:2px;background:var(--bg4);border-radius:1px;overflow:hidden;margin-bottom:1.5rem}
+.progress-bar{height:100%;background:var(--gold);border-radius:1px}
+@media(max-width:768px){.journey-hero{padding:5rem 1.25rem 3rem}}
+
+/* TIMELINE */
+.timeline{max-width:800px;margin:0 auto}
+.era-header{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);padding:.5rem 0;margin-bottom:.5rem;margin-top:3rem;border-bottom:1px solid var(--border)}
+.era-header:first-child{margin-top:0}
+.milestone{display:grid;grid-template-columns:20px 1fr;gap:1.25rem;padding:1.25rem 0;position:relative}
+.m-spine{display:flex;flex-direction:column;align-items:center;padding-top:3px}
+.m-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.md-done{background:var(--bg4);border:1px solid var(--dim)}
+.md-now{background:var(--bg3);border:2px solid var(--gold);position:relative}
+.md-now::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(201,168,76,.3);animation:ring 1.6s ease-out infinite}
+.md-future{background:transparent;border:1px dashed rgba(29,158,117,.3)}
+.md-dest{width:18px;height:18px;background:transparent;border:2px solid rgba(29,158,117,.6)}
+.m-vline{width:1px;flex:1;min-height:12px;margin-top:4px}
+.vl-done{background:var(--dim);opacity:.3}
+.vl-now{border-left:1px dashed rgba(201,168,76,.35);width:0;margin-left:.5px}
+.vl-future{border-left:1px dashed rgba(29,158,117,.2);width:0;margin-left:.5px}
+.m-body{padding-bottom:.5rem}
+.m-era-tag{font-size:.62rem;font-family:'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.3rem}
+.tag-done{color:var(--dim)}
+.tag-now{color:var(--gold)}
+.tag-future{color:rgba(29,158,117,.5)}
+.tag-dest{color:rgba(29,158,117,.7);font-size:.7rem}
+.m-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.4rem}
+.title-done{color:var(--muted)}
+.title-now{color:var(--text)}
+.title-future{color:rgba(29,158,117,.55)}
+.title-dest{color:rgba(29,158,117,.8);font-size:1.25rem}
+.m-skills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.sk{font-size:.68rem;padding:.2rem .6rem;border-radius:999px;font-family:'DM Mono',monospace}
+.sk-done{background:var(--bg3);color:var(--dim);border:1px solid var(--bg4)}
+.sk-now{background:rgba(201,168,76,.08);color:var(--gold);border:1px solid rgba(201,168,76,.2)}
+.sk-future{background:rgba(29,158,117,.05);color:rgba(29,158,117,.5);border:1px dashed rgba(29,158,117,.2)}
+.sk-dest{background:rgba(29,158,117,.1);color:rgba(29,158,117,.7);border:1px solid rgba(29,158,117,.3)}
+.m-note{font-size:.82rem;color:var(--dim);font-style:italic;margin-top:.4rem;line-height:1.6}
+
+@media(max-width:768px){.milestone{grid-template-columns:16px 1fr;gap:1rem}}
+</style>
+</head>
+<body>
+<div id="stars-bg" style="position:fixed;inset:0;z-index:0;pointer-events:none;">
+  <img src="stars_bg.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.07;" aria-hidden="true">
+</div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">DP</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="journey.html" class="active">Journey</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="https://topmate.io/dpkpndy" target="_blank">Mentor</a></li>
+  </ul>
+  <a href="https://topmate.io/dpkpndy" target="_blank" class="nav-cta">Work with me</a>
+  <button class="hamburger" id="ham" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mob">
+  <a href="index.html">Home</a><a href="journey.html">Journey</a>
+  <a href="resume.html">Resume</a><a href="https://topmate.io/dpkpndy" target="_blank">Mentor</a>
+</div>
+
+<!-- JOURNEY HERO with stars bg -->
+<div class="journey-hero">
+  <div class="jh-bg"><img src="stars_bg.jpg" alt="Starry night sky"></div>
+  <div class="jh-overlay"></div>
+  <div class="jh-content fade">
+    <h1 class="journey-title">The path.<em>One step at a time.</em></h1>
+    <p class="journey-sub">"I didn't plan this. I'm just walking forward. Every skill below is a step — some taken, some ahead. Come watch."</p>
+    <div class="cd-wrap-hero">
+      <div class="cd-meta">
+        <span>Journey start · Jan 2025</span>
+        <span id="pct-label">—</span>
+      </div>
+      <div class="progress-track"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+      <div class="cd-grid" id="countdown"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section>
+  <div class="container">
+    <div class="timeline fade">
+
+      <!-- ERA 1 -->
+      <div class="era-header">Era 1 — Market Research · 2017–2019</div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-done"></div><div class="m-vline vl-done"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-done">Completed</div>
+          <div class="m-title title-done">Market Research Analyst</div>
+          <div class="m-note">Primenumbers Technologies → Acolyte Resource Group. Where it all started. Learning to find signal in noise before I even knew what data science was.</div>
+          <div class="m-skills">
+            <span class="sk sk-done">Excel ✓</span>
+            <span class="sk sk-done">Boolean search ✓</span>
+            <span class="sk sk-done">Market intelligence ✓</span>
+            <span class="sk sk-done">Business writing ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ERA 2 -->
+      <div class="era-header">Era 2 — Data &amp; BI Analyst · 2019–2024</div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-done"></div><div class="m-vline vl-done"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-done">Completed</div>
+          <div class="m-title title-done">Business Analyst — Risk Intelligence</div>
+          <div class="m-note">Supply Wisdom (2019–2023). Built dashboards, wrote advanced SQL, conducted risk assessments for US enterprise clients.</div>
+          <div class="m-skills">
+            <span class="sk sk-done">Advanced Excel ✓</span>
+            <span class="sk sk-done">Power Query ✓</span>
+            <span class="sk sk-done">SQL ✓</span>
+            <span class="sk sk-done">Advanced SQL ✓</span>
+            <span class="sk sk-done">Power BI ✓</span>
+            <span class="sk sk-done">Tableau ✓</span>
+            <span class="sk sk-done">Agile ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-done"></div><div class="m-vline vl-done"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-done">Completed</div>
+          <div class="m-title title-done">BI Analyst · Product Manager</div>
+          <div class="m-note">Quote-Unquote Art (2023–2024). Led data-driven growth for an indie digital art platform. +30% traffic. +14% campaign ROI.</div>
+          <div class="m-skills">
+            <span class="sk sk-done">Dashboards ✓</span>
+            <span class="sk sk-done">Marketing analytics ✓</span>
+            <span class="sk sk-done">Product thinking ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ERA 2.5 — BIG DATA -->
+      <div class="era-header">Era 2.5 — Big Data @ Scale · 2024–Present</div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-done"></div><div class="m-vline vl-done"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-done">Apr 2024 – Apr 2026</div>
+          <div class="m-title title-done">Data Analyst — US &amp; Canada Operations</div>
+          <div class="m-note">EXL · Client: Uber. First time working with data at truly massive scale — billions of records, 50M+ items automated.</div>
+          <div class="m-skills">
+            <span class="sk sk-done">Presto / Hive ✓</span>
+            <span class="sk sk-done">Big Data ✓</span>
+            <span class="sk sk-done">GCP ✓</span>
+            <span class="sk sk-done">Alteryx ✓</span>
+            <span class="sk sk-done">Tax classification automation ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-now"></div><div class="m-vline vl-now"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-now">Apr 2026 – Present <span class="blink"></span></div>
+          <div class="m-title title-now">Data Analyst — US &amp; Canada Operations</div>
+          <div class="m-note">Grant Thornton · Client: Uber. Same mission, new firm. Working with AI/ML teams on data classification and operational intelligence.</div>
+          <div class="m-skills">
+            <span class="sk sk-now">Billions of records</span>
+            <span class="sk sk-now">AI/ML collaboration</span>
+            <span class="sk sk-now">Operational intelligence</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ERA 3 — AI LEARNING PATH -->
+      <div class="era-header">Era 3 — Applied AI Engineer · 2025 → Dec 2026 (learning alongside work)</div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-now"></div><div class="m-vline vl-now"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-now">Learning right now <span class="blink"></span></div>
+          <div class="m-title title-now">Python fundamentals</div>
+          <div class="m-note">Week 3. Just got comfortable with loops. Functions still feel slippery. Showing up daily.</div>
+          <div class="m-skills">
+            <span class="sk sk-now">Syntax</span>
+            <span class="sk sk-now">Data types</span>
+            <span class="sk sk-now">Loops</span>
+            <span class="sk sk-now">Functions — in progress</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FUTURE STEPS -->
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-future"></div><div class="m-vline vl-future"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-future">Ahead</div>
+          <div class="m-title title-future">Python for data analysis</div>
+          <div class="m-skills">
+            <span class="sk sk-future">Pandas</span>
+            <span class="sk sk-future">NumPy</span>
+            <span class="sk sk-future">Matplotlib</span>
+            <span class="sk sk-future">Jupyter notebooks</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-future"></div><div class="m-vline vl-future"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-future">Ahead</div>
+          <div class="m-title title-future">Statistics &amp; probability</div>
+          <div class="m-skills">
+            <span class="sk sk-future">Distributions</span>
+            <span class="sk sk-future">Hypothesis testing</span>
+            <span class="sk sk-future">Bayesian inference</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-future"></div><div class="m-vline vl-future"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-future">Ahead</div>
+          <div class="m-title title-future">Machine learning</div>
+          <div class="m-skills">
+            <span class="sk sk-future">Scikit-learn</span>
+            <span class="sk sk-future">Regression &amp; classification</span>
+            <span class="sk sk-future">Model evaluation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-future"></div><div class="m-vline vl-future"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-future">Ahead</div>
+          <div class="m-title title-future">LLMs &amp; prompt engineering</div>
+          <div class="m-skills">
+            <span class="sk sk-future">API integration</span>
+            <span class="sk sk-future">RAG pipelines</span>
+            <span class="sk sk-future">Vector databases</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-future"></div><div class="m-vline vl-future"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-future">Ahead</div>
+          <div class="m-title title-future">LangChain &amp; AI agents</div>
+          <div class="m-skills">
+            <span class="sk sk-future">Chains</span>
+            <span class="sk sk-future">Tool use</span>
+            <span class="sk sk-future">Autonomous agents</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="m-spine"><div class="m-dot md-future"></div><div class="m-vline vl-future"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-future">Ahead</div>
+          <div class="m-title title-future">MLOps &amp; deployment</div>
+          <div class="m-skills">
+            <span class="sk sk-future">Docker</span>
+            <span class="sk sk-future">FastAPI</span>
+            <span class="sk sk-future">Model serving</span>
+            <span class="sk sk-future">AWS SageMaker</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESTINATION -->
+      <div class="milestone" style="margin-top:1rem">
+        <div class="m-spine"><div class="m-dot md-dest" style="width:18px;height:18px"></div></div>
+        <div class="m-body">
+          <div class="m-era-tag tag-dest">The destination · December 2026</div>
+          <div class="m-title title-dest" style="font-size:1.4rem">Applied AI Engineer ★</div>
+          <div class="m-note" style="color:rgba(29,158,117,.45)">"I told myself. Now I'm telling you. Watch."</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">Updated monthly · come back and check · last update May 2025</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="resume.html">Resume</a>
+    <a href="https://topmate.io/dpkpndy" target="_blank">Topmate</a>
+  </div>
+</footer>
+
+<script>
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+if(ham)ham.addEventListener('click',()=>mob.classList.toggle('open'));
+function pad(n,l){return String(n).padStart(l,'0')}
+function tick(){
+  const diff=Math.max(0,new Date('2026-12-31T23:59:59+05:30').getTime()-Date.now());
+  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),
+        m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+  const cd=document.getElementById('countdown');
+  if(cd)cd.innerHTML=`
+    <div class="cd-cell"><span class="cd-num">${pad(d,3)}</span><span class="cd-unit">Days</span></div>
+    <div style="background:var(--bg3);display:flex;align-items:center;padding:0 .1rem;color:var(--dim);font-family:'DM Mono',monospace;font-size:1.2rem;padding-bottom:1.2rem">:</div>
+    <div class="cd-cell"><span class="cd-num">${pad(h,2)}</span><span class="cd-unit">Hours</span></div>
+    <div style="background:var(--bg3);display:flex;align-items:center;padding:0 .1rem;color:var(--dim);font-family:'DM Mono',monospace;font-size:1.2rem;padding-bottom:1.2rem">:</div>
+    <div class="cd-cell"><span class="cd-num">${pad(m,2)}</span><span class="cd-unit">Mins</span></div>
+    <div style="background:var(--bg3);display:flex;align-items:center;padding:0 .1rem;color:var(--dim);font-family:'DM Mono',monospace;font-size:1.2rem;padding-bottom:1.2rem">:</div>
+    <div class="cd-cell"><span class="cd-num">${pad(s,2)}</span><span class="cd-unit">Secs</span></div>`;
+  const start=new Date('2025-01-01').getTime(),end=new Date('2026-12-31T23:59:59+05:30').getTime();
+  const pct=Math.min(100,Math.max(0,((Date.now()-start)/(end-start))*100));
+  const pb=document.getElementById('progress-bar');
+  if(pb)pb.style.width=pct.toFixed(1)+'%';
+  const pl=document.getElementById('pct-label');
+  if(pl)pl.textContent=pct.toFixed(1)+'% of the way there';
+}
+tick();setInterval(tick,1000);
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
