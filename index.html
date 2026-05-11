@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deepak Pandey — Walking the Path</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--cream:#FAF8F3;--cream2:#F0EDE4;--cream3:#E8E4D8;--ink:#1A1915;--ink2:#444441;--ink3:#888780;--gold:#C9A84C;--gold-d:#8A6A28;--green:#4CAF7D;--border:#E8E4D8;--radius:4px}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;overflow-x:hidden}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:56px;background:rgba(250,248,243,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:.45rem 1.2rem;border-radius:var(--radius);text-decoration:none;font-weight:500;white-space:nowrap}
+.nav-cta:hover{background:var(--ink2)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--ink2);display:block}
+.mobile-menu{display:none;position:fixed;inset:56px 0 0 0;background:rgba(250,248,243,.98);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.25rem;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink2);text-decoration:none}
+section{padding:5rem 2.5rem;position:relative}
+.container{max-width:1100px;margin:0 auto}
+.sec-label{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-family:'DM Mono',monospace;margin-bottom:.75rem}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem;color:var(--ink)}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.blink{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 1.3s ease-in-out infinite;vertical-align:middle;margin-left:5px}
+.btn-dark{display:inline-block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:.65rem 1.5rem;border-radius:var(--radius);text-decoration:none;font-weight:500;transition:all .2s}
+.btn-dark:hover{background:var(--ink2)}
+.btn-gold{display:inline-block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:.65rem 1.5rem;border-radius:var(--radius);text-decoration:none;font-weight:600;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-gold:hover{background:#E8C96D}
+.btn-outline{display:inline-block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--ink3);padding:.65rem 1.5rem;border-radius:var(--radius);text-decoration:none;border:1px solid var(--border);transition:all .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.cd-grid{display:flex;gap:1px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.15);border-radius:var(--radius);overflow:hidden}
+.cd-cell{background:rgba(26,25,21,.85);padding:1rem 1.25rem;text-align:center;flex:1}
+.cd-num{font-family:'DM Mono',monospace;font-size:1.8rem;font-weight:400;color:var(--gold);display:block;line-height:1;margin-bottom:.3rem}
+.cd-unit{font-size:.6rem;color:#444441;letter-spacing:.12em;text-transform:uppercase;font-family:'DM Mono',monospace}
+.cd-sep{background:rgba(26,25,21,.85);display:flex;align-items:center;padding:0 .15rem;color:#333330;font-family:'DM Mono',monospace;font-size:1.2rem;padding-bottom:1.2rem}
+footer{background:var(--ink);padding:1.75rem 2.5rem;display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:.72rem;color:#444441;font-family:'DM Mono',monospace}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.68rem;color:#444441;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+@media(max-width:768px){.nav{padding:0 1.25rem}.nav-links,.nav-cta{display:none}.hamburger{display:flex}section{padding:4rem 1.25rem}.cd-num{font-size:1.3rem}.cd-cell{padding:.75rem .6rem}footer{flex-direction:column;gap:1rem;padding:1.5rem 1.25rem;text-align:center}}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;padding-top:56px}
+.hero-photo{position:absolute;inset:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,25,21,1) 0%,rgba(26,25,21,.65) 40%,rgba(26,25,21,.1) 80%)}
+.hero-badge{position:absolute;top:72px;left:2.5rem;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;background:rgba(201,168,76,.9);color:var(--ink);padding:.3rem .9rem;border-radius:2px;font-weight:600;font-family:'DM Mono',monospace;z-index:2}
+.hero-status{position:absolute;top:72px;right:2.5rem;display:flex;align-items:center;gap:.5rem;font-size:.65rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;font-family:'DM Mono',monospace;z-index:2}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1100px;margin:0 auto;padding:0 2.5rem 5rem}
+.hero-eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'DM Mono',monospace;margin-bottom:1rem}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,9vw,7.5rem);font-weight:800;line-height:.92;letter-spacing:-.02em;color:#FAF8F3;margin-bottom:1rem}
+.hero-name em{display:block;font-style:italic;color:var(--gold)}
+.hero-quote{font-family:'Playfair Display',serif;font-size:clamp(1rem,2vw,1.15rem);color:rgba(250,248,243,.5);font-style:italic;max-width:500px;line-height:1.8;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-light{display:inline-block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:#FAF8F3;color:var(--ink);padding:.65rem 1.5rem;border-radius:var(--radius);text-decoration:none;font-weight:500;transition:all .2s}
+.btn-light:hover{background:var(--cream2)}
+.btn-ghost-light{display:inline-block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:rgba(250,248,243,.6);padding:.65rem 1.5rem;border-radius:var(--radius);text-decoration:none;border:1px solid rgba(250,248,243,.2);transition:all .2s}
+.btn-ghost-light:hover{color:#FAF8F3;border-color:rgba(250,248,243,.5)}
+.marquee-strip{background:var(--ink);padding:.85rem 0;overflow:hidden}
+.marquee-inner{display:flex;gap:2.5rem;animation:marquee 22s linear infinite;white-space:nowrap}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-item{font-size:.7rem;color:#444441;letter-spacing:.14em;text-transform:uppercase;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:1rem}
+.marquee-item::after{content:'◆';color:var(--gold-d);font-size:.5rem}
+.now-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.now-card{background:var(--cream2);border-radius:var(--radius);padding:1.25rem;border:1px solid var(--border)}
+.now-tag{font-size:.62rem;color:var(--gold);font-family:'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+.now-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:.25rem}
+.now-sub{font-size:.82rem;color:var(--ink3);line-height:1.5}
+.ptrack{height:2px;background:var(--cream3);border-radius:1px;margin-top:.75rem}
+.pfill{height:100%;background:var(--gold);border-radius:1px}
+.story-bg{background:var(--cream2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.story-quote{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink2);font-style:italic;line-height:1.9;border-left:2px solid var(--gold);padding-left:1.5rem;margin-bottom:1.5rem;max-width:680px}
+.story-quote strong{color:var(--ink);font-style:normal}
+.path-row{display:flex;align-items:flex-start;margin-top:2rem;overflow-x:auto;padding-bottom:.5rem}
+.path-node{display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:1;min-width:80px}
+.path-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:600;font-family:'DM Mono',monospace}
+.pd-done{background:var(--cream3);color:var(--ink3);border:1px solid var(--border)}
+.pd-now{background:var(--cream);border:2px solid var(--gold);color:var(--gold)}
+.pd-future{background:var(--cream2);border:1px dashed rgba(76,175,125,.4);color:rgba(76,175,125,.5)}
+.path-label{font-size:.72rem;color:var(--ink3);text-align:center;line-height:1.4}
+.path-label.active{color:var(--gold)}
+.path-label.future{color:rgba(76,175,125,.6)}
+.path-yr{font-size:.62rem;color:var(--border);font-family:'DM Mono',monospace}
+.path-line{flex:1;height:1px;background:var(--cream3);margin-top:18px;min-width:20px}
+.path-line.future{border-top:1px dashed rgba(76,175,125,.3);height:0;margin-top:18.5px}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2rem}
+.work-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;text-decoration:none;color:inherit;display:block;transition:all .2s}
+.work-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.work-tag{font-size:.62rem;font-family:'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
+.work-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.work-desc{font-size:.88rem;color:var(--ink3);line-height:1.7;margin-bottom:1.25rem}
+.work-link{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid;display:inline-block;padding-bottom:2px}
+.stars-section{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden}
+.stars-bg{position:absolute;inset:0}
+.stars-bg img{width:100%;height:100%;object-fit:cover;object-position:center 50%}
+.stars-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,9,8,.97) 0%,rgba(10,9,8,.78) 55%,rgba(10,9,8,.2) 100%)}
+.stars-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 2.5rem;width:100%}
+.stars-heading{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;font-style:italic;line-height:1.1;color:#FAF8F3;margin-bottom:.75rem}
+.stars-heading em{color:var(--gold)}
+.stars-sub{font-family:'Playfair Display',serif;font-size:1rem;color:rgba(250,248,243,.4);font-style:italic;margin-bottom:1.5rem}
+.progress-track{height:2px;background:rgba(255,255,255,.08);border-radius:1px;margin-top:.4rem;max-width:380px;overflow:hidden}
+.progress-bar{height:100%;background:var(--gold);border-radius:1px}
+.cd-meta{display:flex;justify-content:space-between;font-size:.72rem;color:#444441;font-family:'DM Mono',monospace;margin-top:.5rem;max-width:380px}
+.nl-bg{background:var(--cream2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.nl-form{display:flex;gap:.5rem;margin-top:1rem;max-width:420px}
+.nl-input{flex:1;background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:.65rem 1rem;color:var(--ink);font-size:.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.nl-input:focus{border-color:var(--gold)}
+.nl-input::placeholder{color:var(--ink3)}
+.ai-card{background:var(--cream2);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;max-width:760px}
+.ai-quote{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink2);font-style:italic;line-height:1.9;margin-bottom:.5rem}
+.ai-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.ai-tag{font-size:.68rem;padding:.25rem .7rem;border-radius:999px;background:var(--cream3);border:1px solid var(--border);color:var(--ink3);font-family:'DM Mono',monospace}
+@media(max-width:768px){.now-grid{grid-template-columns:1fr}.work-grid{grid-template-columns:1fr}.stars-overlay{background:rgba(10,9,8,.92)}.stars-content{padding:0 1.25rem}.hero-badge{left:1.25rem;top:68px}.hero-status{right:1.25rem;top:68px}.hero-content{padding:0 1.25rem 4rem}.nl-form{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-name">Deepak Pandey</a>
+  <ul class="nav-links"><li><a href="index.html" class=active>Home</a></li><li><a href="journey.html">Journey</a></li><li><a href="resume.html">Resume</a></li><li><a href="https://topmate.io/dpkpndy" target="_blank">Mentor</a></li></ul>
+  <a href="https://topmate.io/dpkpndy" target="_blank" class="nav-cta">Work with me</a>
+  <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mob">
+  <a href="index.html">Home</a><a href="journey.html">Journey</a>
+  <a href="resume.html">Resume</a><a href="https://topmate.io/dpkpndy" target="_blank">Mentor</a>
+</div>
+
+<section class="hero">
+  <div class="hero-photo"><img src="deepak_hero.jpg" alt="Deepak Pandey on a zipline adventure"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-badge">walking the path · 2017 → 2026</div>
+  <div class="hero-status"><div class="hero-dot"></div>open to ai roles</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Bengaluru · Data Analyst · Applied AI Engineer in the making</div>
+    <h1 class="hero-name">Deepak<em>Pandey</em></h1>
+    <p class="hero-quote">"Regular guy. Big dream. Still showing up — one day at a time."</p>
+    <div class="hero-btns">
+      <a href="journey.html" class="btn-light">Follow the journey</a>
+      <a href="https://topmate.io/dpkpndy" target="_blank" class="btn-ghost-light">Work with me</a>
+      <a href="resume.html" class="btn-ghost-light">Resume</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item">9 years in data</span><span class="marquee-item">Grant Thornton · Uber</span><span class="marquee-item">Learning Python</span><span class="marquee-item">BIT Mesra alumni</span><span class="marquee-item">Applied AI Engineer</span><span class="marquee-item">Open to AI roles</span><span class="marquee-item">Mentor on Topmate</span><span class="marquee-item">Dec 2026 deadline</span><span class="marquee-item">9 years in data</span><span class="marquee-item">Grant Thornton · Uber</span><span class="marquee-item">Learning Python</span><span class="marquee-item">BIT Mesra alumni</span><span class="marquee-item">Applied AI Engineer</span><span class="marquee-item">Open to AI roles</span><span class="marquee-item">Mentor on Topmate</span><span class="marquee-item">Dec 2026 deadline</span>
+  </div>
+</div>
+
+<section>
+  <div class="container fade">
+    <div class="sec-label">What I'm doing right now</div>
+    <div class="now-grid">
+      <div class="now-card">
+        <div class="now-tag">Learning</div>
+        <div class="now-title">Python basics <span class="blink"></span></div>
+        <div class="now-sub">Syntax, loops, functions. Week by week.</div>
+        <div class="ptrack"><div class="pfill" style="width:18%"></div></div>
+      </div>
+      <div class="now-card">
+        <div class="now-tag">Reading</div>
+        <div class="now-title">Atomic Habits</div>
+        <div class="now-sub">Small steps. Boring wins. That's the whole strategy.</div>
+      </div>
+      <div class="now-card">
+        <div class="now-tag">Building</div>
+        <div class="now-title">AI market agent</div>
+        <div class="now-sub">Very early. Very messy. Showing up anyway.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story-bg">
+  <div class="container fade">
+    <div class="sec-label">The honest story</div>
+    <p class="story-quote">"I'm not going to pretend I had a plan. I fell into market research, stayed in data because it paid well, and one day decided I wanted more. Today I analyse billions of records for Uber at Grant Thornton. Now I'm also learning to code at night. <strong>Some days it clicks. Most days it doesn't.</strong> But I keep showing up — and that, I've decided, is enough."</p>
+    <div class="path-row">
+      <div class="path-node"><div class="path-dot pd-done">MR</div><div class="path-label">Market<br>Research</div><div class="path-yr" style="color:var(--ink3)">2017</div></div>
+      <div class="path-line"></div>
+      <div class="path-node"><div class="path-dot pd-done">BI</div><div class="path-label">Data &amp;<br>BI Analyst</div><div class="path-yr" style="color:var(--ink3)">2019</div></div>
+      <div class="path-line"></div>
+      <div class="path-node"><div class="path-dot pd-now">Py</div><div class="path-label active">Python<span class="blink"></span></div><div class="path-yr" style="color:var(--gold-d)">Now</div></div>
+      <div class="path-line future"></div>
+      <div class="path-node" style="opacity:.5"><div class="path-dot pd-future">AI</div><div class="path-label future">Applied AI<br>Engineer</div><div class="path-yr future">Dec 2026</div></div>
+    </div>
+    <div style="margin-top:1.5rem"><a href="journey.html" style="font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,168,76,.4);display:inline-block;padding-bottom:2px;text-decoration:none">See the full skill roadmap →</a></div>
+  </div>
+</section>
+
+<section>
+  <div class="container fade">
+    <div class="sec-label">Work with me</div>
+    <div class="work-grid">
+      <a href="mailto:dpkpndy@hotmail.com" class="work-card">
+        <div class="work-tag" style="color:var(--gold)">Freelance projects</div>
+        <div class="work-title">Data &amp; AI gigs</div>
+        <div class="work-desc">Need a dashboard? Market research? An early AI build? 9 years solving exactly these problems — from startups to Uber.</div>
+        <span class="work-link" style="color:var(--gold);border-color:rgba(201,168,76,.4)">Get in touch →</span>
+      </a>
+      <a href="https://topmate.io/dpkpndy" target="_blank" class="work-card">
+        <div class="work-tag" style="color:var(--green)">Mentorship · Topmate</div>
+        <div class="work-title">1:1 sessions</div>
+        <div class="work-desc">Career switch into data or AI, roadmap planning, portfolio review. I'm mid-journey myself — that's exactly why I can help.</div>
+        <span class="work-link" style="color:var(--green);border-color:rgba(76,175,125,.4)">Book on Topmate →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="stars-section">
+  <div class="stars-bg"><img src="stars_bg.jpg" alt="Person standing on a jeep under the Milky Way"></div>
+  <div class="stars-overlay"></div>
+  <div class="stars-content fade">
+    <div class="sec-label">The mission</div>
+    <h2 class="stars-heading">Applied AI Engineer<br><em>by December 2026.</em></h2>
+    <p class="stars-sub">"I told myself. Now I'm telling you. Watch."</p>
+    <div class="cd-grid" id="cd1"></div>
+    <div class="cd-meta"><span>Journey start · Jan 2025</span><span id="pct-label">—</span></div>
+    <div class="progress-track"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+    <div style="margin-top:1.5rem"><a href="journey.html" class="btn-light">See the full roadmap</a></div>
+  </div>
+</div>
+
+<section class="nl-bg">
+  <div class="container fade">
+    <div class="sec-label">Join the journey</div>
+    <div style="max-width:560px">
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;font-style:italic;margin-bottom:.75rem;color:var(--ink)">A monthly honest update.</h2>
+      <p style="color:var(--ink3);font-size:.95rem;margin-bottom:1rem">No highlight reel. No productivity hacks. Just what I learned, what confused me, and what I'm doing next.</p>
+      <div class="nl-form">
+        <input class="nl-input" type="email" placeholder="your@email.com" aria-label="Email">
+        <button class="btn-gold">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container fade">
+    <div class="sec-label">Transparency</div>
+    <div class="ai-card">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:.75rem;color:var(--ink)">Yes, I used AI to build this site.</h3>
+      <p class="ai-quote">"Full transparency, AI helped me build this. I had the story, the ideas, the direction. AI handled the code so I could focus on what matters. Every word is mine. The HTML though, we don't talk about that. And honestly, knowing how to get AI to build things for you is exactly the skill I'm here to learn. So maybe this site is project number one."</p>
+      <div class="ai-tags">
+        <span class="ai-tag">My ideas</span><span class="ai-tag">My story</span><span class="ai-tag">My direction</span><span class="ai-tag">AI for code</span><span class="ai-tag">Human in the loop</span><span class="ai-tag">Project one</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-copy">© 2025 Deepak Pandey · iamdeepakpandey.com</div>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/dpkpndy/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Pndydpk" target="_blank">GitHub</a>
+    <a href="https://twitter.com/PunchyPandey" target="_blank">Twitter</a>
+    <a href="https://topmate.io/dpkpndy" target="_blank">Topmate</a>
+    <a href="https://www.instagram.com/pndydpk/" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('mob').classList.toggle('open'));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+
+function pad(n,l){return String(n).padStart(l,'0')}
+function tick(){
+  const diff=Math.max(0,new Date('2026-12-31T23:59:59+05:30').getTime()-Date.now());
+  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),
+        m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+  ['cd1','cd2'].forEach(id=>{
+    const cd=document.getElementById(id);
+    if(cd)cd.innerHTML=`<div class="cd-cell"><span class="cd-num">${pad(d,3)}</span><span class="cd-unit">Days</span></div><div class="cd-sep">:</div><div class="cd-cell"><span class="cd-num">${pad(h,2)}</span><span class="cd-unit">Hours</span></div><div class="cd-sep">:</div><div class="cd-cell"><span class="cd-num">${pad(m,2)}</span><span class="cd-unit">Mins</span></div><div class="cd-sep">:</div><div class="cd-cell"><span class="cd-num">${pad(s,2)}</span><span class="cd-unit">Secs</span></div>`;
+  });
+  const start=new Date('2025-01-01').getTime(),end=new Date('2026-12-31T23:59:59+05:30').getTime();
+  const pct=Math.min(100,Math.max(0,((Date.now()-start)/(end-start))*100));
+  ['progress-bar','progress-bar2'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.width=pct.toFixed(1)+'%'});
+  ['pct-label','pct-label2'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=pct.toFixed(1)+'% of the way there'});
+}
+tick();setInterval(tick,1000);
+</script>
+</body></html>
